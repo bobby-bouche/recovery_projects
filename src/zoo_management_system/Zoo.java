@@ -23,4 +23,10 @@ public class Zoo {
 			System.out.println("\n");
 		}
 	}
+	
+	void feedAllAnimals() {
+		for(Animal a : animals) {
+			a.feed();
+		}
+	}
 }

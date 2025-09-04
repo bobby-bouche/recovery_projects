@@ -1,11 +1,19 @@
 package zoo_management_system;
 
 public class Lion extends Animal {
+	
+	private double mainLength;
 
-	Lion(String name, int age) {
+	
+	
+	
+	Lion(String name, int age, double mainLength) {
 		super(name, age);
+		this.setMainLength(mainLength);
 	}
-
+	
+	
+	
 	
 	@Override
 	void makeSound() {
@@ -13,14 +21,32 @@ public class Lion extends Animal {
 	}
 
 	
+	
+	
 	void displayMainLength() {
-		System.out.println();
+		System.out.println("Main length: " + mainLength + " cm");
 	}
 
+	
+	
 
 	@Override
 	public void feed() {
 		System.out.println("Lion is being fed..");
+	}
+
+
+
+
+	public double getMainLength() {
+		return mainLength;
+	}
+
+
+
+
+	public void setMainLength(double mainLength) {
+		this.mainLength = mainLength;
 	}
 	
 	

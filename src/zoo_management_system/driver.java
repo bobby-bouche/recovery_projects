@@ -1,6 +1,6 @@
 package zoo_management_system;
 
-public class driver {
+public class Driver {
 	
 
 	public static void main(String[] args) {
@@ -8,7 +8,7 @@ public class driver {
 		try {
 			
 			Zoo zoo = new Zoo();
-			Lion lion = new Lion("Harry", 4);
+			Lion lion = new Lion("Harry", 4, 10);
 			Parrot parrot = new Parrot("Polly", 2);
 			Elephant elephant = new Elephant("Elaneor", 8);
 			
@@ -17,6 +17,7 @@ public class driver {
 			zoo.addAnimal(parrot);
 			
 			zoo.makeAllSounds();
+			
 			
 		}
 		catch(IllegalArgumentException e) {

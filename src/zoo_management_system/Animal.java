@@ -3,8 +3,8 @@ package zoo_management_system;
 public abstract class Animal implements Feedable {
 
 	// Animal fields
-	String name;
-	int age;
+	private String name;
+	private int age;
 	
 	
 	// constructor
@@ -13,6 +13,22 @@ public abstract class Animal implements Feedable {
 		this.age = age;
 	}
 	
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public int getAge() {
+		return age;
+	}
+	
+	public void setAge(int age) {
+		this.age = age;
+	}
 	
 	abstract void makeSound();
 	
