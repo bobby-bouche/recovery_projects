@@ -4,28 +4,30 @@ public class SavingsAccount extends Account {
 	
 	private double interest_rate = 0.05;
 
+	
+
 	public SavingsAccount(int accNum, double balance) {
 		super(accNum, balance);
 	}
 
-	@Override
-	public void deposit(double amount) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public void withdraw(double amount) {
-		// TODO Auto-generated method stub
-		
+		if(getBalance() - amount > 0) {
+			double newBalance = getBalance() - amount;
+			setBalance(newBalance);
+			System.out.println("Withdaw successfull.\nNew balance: $" + newBalance);
+		}
 	}
 
+	
+	
 	@Override
 	void calculateInterest() {
 		double interest;
 		interest = getBalance() * interest_rate;
 		System.out.println("$" + interest);
 	}
-	
 	
 }

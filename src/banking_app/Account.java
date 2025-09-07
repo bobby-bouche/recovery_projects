@@ -42,6 +42,13 @@ public abstract class Account implements Transactable{
 	abstract void calculateInterest();
 	
 	
+	@Override
+	public void deposit(double amount) {
+		double newBalance = getBalance() + amount;
+		setBalance(newBalance);
+		System.out.println("Deposit successful.\nNew balance: $" + newBalance);	
+	}
+	
 	public void getInfo() {
 		System.out.println("Account no: " + accountNumber + "\n" + "Balance: " + balance);
 	}

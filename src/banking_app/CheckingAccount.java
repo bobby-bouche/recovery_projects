@@ -9,16 +9,14 @@ public class CheckingAccount extends Account {
 		super(accNum, balance);
 	}
 
-	@Override
-	public void deposit(double amount) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void withdraw(double amount) {
-		// TODO Auto-generated method stub
-		
+		if(getBalance() - amount < overdraft_limit) {
+			double newBalance = getBalance() - amount;
+			setBalance(newBalance);
+			System.out.println("Withdaw successfull.\nNew balance: $" + newBalance);
+		}
 	}
 
 	@Override
