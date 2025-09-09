@@ -24,10 +24,10 @@ public class SavingsAccount extends Account {
 	
 	
 	@Override
-	void calculateInterest() {
+	double calculateInterest() {
 		double interest;
 		interest = getBalance() * interest_rate;
-		System.out.println("$" + interest);
+		return(interest);
 	}
 	
 }

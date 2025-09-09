@@ -39,7 +39,7 @@ public abstract class Account implements Transactable{
 	
 	
 	// methods
-	abstract void calculateInterest();
+	abstract double calculateInterest();
 	
 	
 	@Override
