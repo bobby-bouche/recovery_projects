@@ -42,6 +42,7 @@ public abstract class Account implements Transactable{
 	abstract double calculateInterest();
 	
 	
+	
 	@Override
 	public void deposit(double amount) {
 		double newBalance = getBalance() + amount;
@@ -50,7 +51,7 @@ public abstract class Account implements Transactable{
 	}
 	
 	public void getInfo() {
-		System.out.println("Account no: " + accountNumber + "\n" + "Balance: " + balance);
+		System.out.println("Account no: " + accountNumber + "\n" + "Balance: " + balance + "\n");
 	}
 
 }

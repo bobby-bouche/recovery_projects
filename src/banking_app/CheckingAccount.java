@@ -11,11 +11,14 @@ public class CheckingAccount extends Account {
 
 
 	@Override
-	public void withdraw(double amount) {
-		if(getBalance() - amount < overdraft_limit) {
+	public void withdraw(double amount) throws InsufficientFundsException {
+		if(getBalance() - amount > overdraft_limit) {
 			double newBalance = getBalance() - amount;
 			setBalance(newBalance);
 			System.out.println("Withdaw successfull.\nNew balance: $" + newBalance);
+		}
+		else {
+			throw new InsufficientFundsException("Insufficient funds: " + this.getAccountNumber());
 		}
 	}
 

@@ -13,11 +13,14 @@ public class SavingsAccount extends Account {
 	
 
 	@Override
-	public void withdraw(double amount) {
+	public void withdraw(double amount) throws InsufficientFundsException {
 		if(getBalance() - amount > 0) {
 			double newBalance = getBalance() - amount;
 			setBalance(newBalance);
 			System.out.println("Withdaw successfull.\nNew balance: $" + newBalance);
+		}
+		else {
+			throw new InsufficientFundsException("Insufficient funds: " + this.getAccountNumber());
 		}
 	}
 
