@@ -17,18 +17,16 @@ public class Bank {
 
 
 	// getter
-	public static List<Account> getAccounts() {
+	public List<Account> getAccounts() {
 		return accounts;
 	}
 	
 	
 	public void addAccount(Account a) {
-		for(Account acc : accounts) {
-			if(acc.getAccountNumber() == a.getAccountNumber()) {
-				throw new IllegalArgumentException("Bank already contains this account");
-			}
-			accounts.add(a);
+		if(accounts.contains(a)) {
+			throw new IllegalArgumentException("Bank already contains this account");
 		}
+		accounts.add(a);
 	}
 	
 	
@@ -55,26 +53,38 @@ public class Bank {
 		}
 		if(amount <= 0) {
 			throw new InvalidAmountException("Invalid amount: " + amount);
-		}		
+		}	
+		
+		
+		/*
+		 * 
+		 */
+		
 		for(Account a : accounts) {
 			if(a.getAccountNumber() != fromAccNum) {
 				throw new IllegalArgumentException("Invalid account number: " + fromAccNum);
 			}
-			if(a.getAccountNumber() != toAccNum) {
+		}	
+		for(Account b : accounts) {
+			if(b.getAccountNumber() != toAccNum) {
 				throw new IllegalArgumentException("Invalid account number: " + toAccNum);
 			}
-		}	
+		}
 		
-		Account senderAccount   = getAccount(fromAccNum);
-		Account recieverAccount = getAccount(toAccNum);
-		System.out.println("got this far!");
+		/*
+		 * 
+		 */
+		
+		
+		Account senderAccount   = this.getAccount(fromAccNum);
+		Account recieverAccount = this.getAccount(toAccNum);
 		senderAccount.withdraw(amount);
 		recieverAccount.deposit(amount);
 		
 		System.out.println("transfer successful. \nNew balance: " + senderAccount.getBalance());
 	}
-	
-	
+
+
 	public void applyInterest() {
 		for(Account a : accounts) {
 			double interest = a.calculateInterest();
