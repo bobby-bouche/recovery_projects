@@ -6,7 +6,7 @@ import java.util.List;
 public class Bank {
 
 	// Bank fields
-	private static List<Account> accounts;
+	private List<Account> accounts;
 	
 	
 	
@@ -71,10 +71,10 @@ public class Bank {
 			throw new InvalidAmountException("Invalid amount: " + amount);
 		}	
 		if(validateAccount(fromAccNum) == false) {
-			throw new IllegalArgumentException("Invalid account number: " + fromAccNum);
+			throw new InvalidAccountException("Invalid account number: " + fromAccNum);
 		}
 		if(validateAccount(toAccNum) == false) {
-			throw new IllegalArgumentException("Invalid account number: " + toAccNum);
+			throw new InvalidAccountException("Invalid account number: " + toAccNum);
 		}
 		
 		Account senderAccount   = getAccount(fromAccNum);

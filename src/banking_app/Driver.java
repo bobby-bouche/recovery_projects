@@ -32,7 +32,7 @@ public class Driver {
 		catch(InsufficientFundsException e) {
 			System.out.println(e);
 		}
-		catch(IllegalArgumentException e) {
+		catch(InvalidAccountException e) {
 			System.out.println(e);
 		} 
 	
