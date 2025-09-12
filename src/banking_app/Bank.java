@@ -82,7 +82,7 @@ public class Bank {
 		senderAccount.withdraw(amount);
 		recieverAccount.deposit(amount);
 		
-		System.out.println("transfer successful. \nNew balance: " + senderAccount.getBalance());
+		System.out.println("transfer successful. \nNew balance: " + senderAccount.getBalance() + "\n");
 	}
 
 	
@@ -91,7 +91,8 @@ public class Bank {
 		for(Account a : accounts) {
 			double interest = a.calculateInterest();
 			a.getInfo();
-			System.out.println("Calculated Interest: " + interest);
+			System.out.println("Calculated Interest: " + interest + "\n");
+			System.out.println("Account total: $" + (a.getBalance() + interest) + "\n");
 		}
 	}
 	

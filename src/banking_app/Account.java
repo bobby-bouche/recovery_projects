@@ -45,9 +45,14 @@ public abstract class Account implements Transactable{
 	
 	@Override
 	public void deposit(double amount) {
-		double newBalance = getBalance() + amount;
-		setBalance(newBalance);
-		System.out.println("Deposit successful.\nNew balance: $" + newBalance);	
+		if(amount > 0) {
+			double newBalance = getBalance() + amount;
+			setBalance(newBalance);
+			System.out.println("Deposit successful.\nNew balance: $" + newBalance);	
+		}
+		else {
+			throw new InvalidAmountException("Invalid amount: " + amount);
+		}
 	}
 	
 	public void getInfo() {

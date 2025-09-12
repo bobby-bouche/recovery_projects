@@ -15,14 +15,15 @@ public class Driver {
 			bank.addAccount(acc2);
 			
 			acc1.deposit(100.00);
-			//acc2.withdraw(200.0);
+			acc2.withdraw(200.0);
 			//acc2.withdraw(7750.00);
 			//acc1.withdraw(900.00);
+			//acc1.deposit(-100);
 		
 			String s1 = Integer.toString(acc1.getAccountNumber());
 			String s2 = Integer.toString(acc2.getAccountNumber());
-			//System.out.println(bank.getAccounts());
 			bank.transfer(s1, s2, 150.0);
+			bank.applyInterest();
 			
 		}
 		catch(InvalidAmountException e) {
