@@ -15,11 +15,13 @@ public class Bank {
 		accounts = new ArrayList<>();
 	}
 
+	
 
 	// getter
 	public List<Account> getAccounts() {
 		return accounts;
 	}
+	
 	
 	
 	public void addAccount(Account a) {
@@ -28,6 +30,7 @@ public class Bank {
 		}
 		accounts.add(a);
 	}
+	
 	
 	
 	private Account getAccount(int accNum) {
@@ -39,6 +42,19 @@ public class Bank {
 		}
 		return account;
 	}
+	
+	
+	
+	private boolean validateAccount(int accNum) {
+		boolean validAccount = false;
+		for(Account a : accounts) {
+			if(a.getAccountNumber() == accNum) {
+				validAccount = true;
+			}
+		}
+		return validAccount;
+	}
+	
 	
 	
 	public void transfer(String fromAcc, String toAcc, double amount) throws InsufficientFundsException{
@@ -54,36 +70,22 @@ public class Bank {
 		if(amount <= 0) {
 			throw new InvalidAmountException("Invalid amount: " + amount);
 		}	
-		
-		
-		/*
-		 * 
-		 */
-		
-		for(Account a : accounts) {
-			if(a.getAccountNumber() != fromAccNum) {
-				throw new IllegalArgumentException("Invalid account number: " + fromAccNum);
-			}
-		}	
-		for(Account b : accounts) {
-			if(b.getAccountNumber() != toAccNum) {
-				throw new IllegalArgumentException("Invalid account number: " + toAccNum);
-			}
+		if(validateAccount(fromAccNum) == false) {
+			throw new IllegalArgumentException("Invalid account number: " + fromAccNum);
+		}
+		if(validateAccount(toAccNum) == false) {
+			throw new IllegalArgumentException("Invalid account number: " + toAccNum);
 		}
 		
-		/*
-		 * 
-		 */
-		
-		
-		Account senderAccount   = this.getAccount(fromAccNum);
-		Account recieverAccount = this.getAccount(toAccNum);
+		Account senderAccount   = getAccount(fromAccNum);
+		Account recieverAccount = getAccount(toAccNum);
 		senderAccount.withdraw(amount);
 		recieverAccount.deposit(amount);
 		
 		System.out.println("transfer successful. \nNew balance: " + senderAccount.getBalance());
 	}
 
+	
 
 	public void applyInterest() {
 		for(Account a : accounts) {
@@ -92,5 +94,6 @@ public class Bank {
 			System.out.println("Calculated Interest: " + interest);
 		}
 	}
+	
 	
 }
